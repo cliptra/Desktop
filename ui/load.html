@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliptra: Your multi-device clipboard</title>
+
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link rel="stylesheet" href="./styles/main-dark.css">
+    <link rel="stylesheet" href="./styles/loaders.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Epilogue' rel='stylesheet'>
+</head>
+<body>
+    <div class="center-screen">
+        <div id="loader" class="hidden">
+            <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        </div>
+        <br>
+        <p class="text-white" id="loading-text">Connecting... 👀</p>
+    </div>
+
+    <p id="href" class="hidden"></p>
+</body>
+<script>
+    setTimeout(() => {
+        var href = document.getElementById("href").innerHTML
+        window.location.href = href;
+    }, 4000);
+</script>
+</html>

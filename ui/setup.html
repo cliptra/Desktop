@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliptra</title>
+
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/loaders.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Epilogue' rel='stylesheet'>
+</head>
+<body class="bg-gray-200">
+<section class="overflow-hidden min-h-screen sm:grid sm:grid-cols-2 sm:items-center">
+  <div class="p-8 md:p-12 lg:px-16 lg:py-24">
+    <div class="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+      <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
+        Your multi-device clipboard ✨
+      </h2>
+
+      <p class="hidden text-gray-500 md:mt-4 md:block">
+        Say goodbye to emailing yourself files to transfer them to another device. Cliptra is a simple, <a href="https://cliptra.com/security" target="_blank"><strong>secure</strong></a>, and <a href="https://cliptra.com/reliable" target="_blank"><strong>reliable</strong></a> clipboard that works on <a href="https://cliptra.com/apps" target="_blank"><strong>all</strong></a> your devices.
+      </p>
+
+      <div class="mt-4 md:mt-8">
+        <button
+          onclick="setup_begin()"
+          class="inline-block rounded bg-pink-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-pink-700 focus:outline-none focus:ring focus:ring-pink-400"
+        >
+          Let's setup <span id="pcname">this pc</span>
+      </button>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                document.getElementById("pcname").innerHTML = `${localStorage.getItem("hostname")}`
+            })
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <img
+    alt=""
+    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgiffiles.alphacoders.com%2F214%2F214311.gif&f=1&nofb=1&ipt=163df0c71098820a68e4dd97677be3ef65ce194d92c1980ded52276985620a51&ipo=images"
+    class="h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-ss-[30px] md:h-[calc(100%_-_4rem)] md:rounded-ss-[60px]"
+  />
+</section>
+
+</body>
+<script>
+    
+</script>
+</html>

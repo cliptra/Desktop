@@ -1,0 +1,29 @@
+body {
+background: rgb(0,0,0);
+background: linear-gradient(169deg, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 35%, rgb(60, 0, 52) 100%);
+    user-select: none;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+:root{
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth:never;
+}
+    
+body {
+    font-family: 'Epilogue'
+}
+
+/* ::selection {
+    background: #55956a;
+    color: black;
+} */

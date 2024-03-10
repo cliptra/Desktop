@@ -1,2 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+ui/styles/* linguist-documentation
+ui/home.html linguist-documentation
+ui/load.html linguist-documentation
+ui/setup.html linguist-documentation
