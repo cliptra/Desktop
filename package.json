@@ -6,6 +6,7 @@
     "custom-electron-titlebar": "^4.2.8",
     "electron": "^29.1.1",
     "electron-store": "^8.2.0",
-    "os": "^0.1.2"
+    "os": "^0.1.2",
+    "shell": "^0.5.1"
   }
 }

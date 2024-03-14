@@ -7,7 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
       document.getElementById("href").innerHTML = `./setup.html`
     }
     
-    localStorage.setItem("hostname", `${os.hostname()} for account '${os.userInfo().username}'`)
+    localStorage.setItem("local_hostname", os.hostname())
+    localStorage.setItem("local_username", os.userInfo().username||"admin")
 
     setTimeout(() => {
       text()
