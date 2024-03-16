@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliptra: Your multi-device clipboard</title>
+
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link rel="stylesheet" href="./styles/main-dark.css">
+    <link rel="stylesheet" href="./styles/loaders.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Epilogue' rel='stylesheet'>
+</head>
+<body>
+    <div class="center-screen">
+        <div id="loader">
+            <div class="lds-heart"><div></div></div>
+        </div>
+        <br>
+        <p class="text-white" id="loadtext"></p>
+    </div>
+
+    <p id="href" class="hidden"></p>
+</body>
+<script>
+    setTimeout(() => {
+        document.getElementById("loadtext").innerHTML = `Registering <strong>${localStorage.getItem("temporary_setupdata_devicename")}</strong> for account <strong>${localStorage.getItem("local_username")}</strong><br>This might take a few seconds.`;
+    }, 1000);
+
+    setTimeout(() => {
+        fetch(`http://localhost:3000/api/registerDevice/?user=${localStorage.getItem("_user_token_")}&name=${localStorage.getItem("temporary_setupdata_devicename")}&directory=${localStorage.getItem("temporary_setupdata_folder")}`)
+        .then(response => response.json())
+        .then(res => {
+            if(res.success === true){
+                localStorage.setItem("device_token", res.token);
+                localStorage.setItem("device_name", res.name);
+                localStorage.setItem("device_directory", res.directory);
+                localStorage.setItem("device_id", res.id);
+                window.location.href = "./home.html";
+            }else{
+                document.getElementById("loader").classList.add("hidden")
+                document.getElementById("loadtext").innerHTML = `Something went wrong, please try again or <a href="https://support.cliptra.com/" target="_blank"><strong>contact us</strong></a>.`
+            }
+        })
+    }, 2000);
+</script>
+</html>

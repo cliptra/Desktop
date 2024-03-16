@@ -1,9 +1,25 @@
 const { app, BrowserWindow } = require('electron/main')
 const path = require('node:path')
 
+const express = require('express')
+const expapp = express()
+const port = 7827
 
-function mainWindow() {
-  const win = new BrowserWindow({
+expapp.get('/', (req, res) => {
+  res.send("Hello World! This is a backend server for the Cliptra desktop app. Please do not worry about it.")
+})
+
+const requestRouter = require('./server_router.js')
+expapp.use('/request', requestRouter)
+
+expapp.listen(port, () => {
+  console.log(`> Server is listening, on port ${port}`)
+})
+
+var win;
+
+function mainWindow(nodeIntegration) {
+  win = new BrowserWindow({
     width: 1280,
     height: 720,
     minWidth: 1280, 
@@ -19,7 +35,6 @@ function mainWindow() {
     // contextIsolation: false,
     preload: path.join(__dirname, '/preloaders/loading.js')
     },
-    backgroundColor:'#000000',
   })
 
   win.loadFile('ui/load.html')
@@ -29,9 +44,17 @@ function mainWindow() {
     return { action: 'deny' }
   })
 
-  const { ipcMain } = require('electron/main')
-  ipcMain.handle('getDirectory', async (event, args) => {
-    console.log("ok")
+  expapp.get('/authorize_account', (req, res) => {
+    var token = req.query.token
+    if(!token) return;
+  
+    win.webContents
+    .executeJavaScript(`localStorage.setItem("_user_token_", "${token}")`, true)
+    .then(result => {
+      console.log(result);
+    });
+
+    win.loadFile('ui/createDevice.html')
   })
 }
 
